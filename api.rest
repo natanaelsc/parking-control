@@ -1,15 +1,11 @@
 
 
-### Variables 
+### Variables
 @baseUrl = http://localhost:8080/parking
+@id = {{uuid.response.body.id}}
 
-### Get List
-GET {{baseUrl}} HTTP/1.1
-
-### Get One 
-GET {{baseUrl}}/caded58e8e0f4ccf99ceb3b131a15a5a HTTP/1.1
-
-### Create
+### Create one parking
+# @name uuid
 POST {{baseUrl}} HTTP/1.1
 Content-Type: application/json
 
@@ -19,3 +15,20 @@ Content-Type: application/json
     "model": "JETTA",
     "color": "CINZA"
 }
+
+### Update one parking
+PUT {{baseUrl}}/{{id}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "color": "PRATA"
+}
+
+### Find all parkings
+GET {{baseUrl}} HTTP/1.1
+
+### Find one parking
+GET {{baseUrl}}/{{id}} HTTP/1.1
+
+### Delete one parking
+DELETE  {{baseUrl}}/{{id}} HTTP/1.1

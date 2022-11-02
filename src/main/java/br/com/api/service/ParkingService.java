@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import br.com.api.exception.ParkingNotFoundException;
 import br.com.api.model.Parking;
 
 @Service
@@ -18,7 +19,7 @@ public class ParkingService {
 
     static {
         var id = getUUID();
-        Parking parking = new Parking(id, "DMS-1111", "SC", "CELTA", "PRETO");
+        Parking parking = new Parking(id, "DMS-1234", "SC", "CELTA", "PRETO");
         parkingMap.put(id, parking);
     }
 
@@ -27,7 +28,10 @@ public class ParkingService {
     }
 
     public Parking findById(String id) {
-        return parkingMap.get(id);
+        Parking parking = parkingMap.get(id);
+        if (parking == null)
+            throw new ParkingNotFoundException(id);
+        return parking;
     }
 
     public Parking create(Parking parking) {
@@ -36,6 +40,22 @@ public class ParkingService {
         parking.setEntryDate(LocalDateTime.now());
         parkingMap.put(id, parking);
         return parking;
+    }
+
+    public void delete(String id) {
+        findById(id);
+        parkingMap.remove(id);
+    }
+
+    public Parking update(String id, Parking parkingCreate) {
+        Parking parking = findById(id);
+        parking.setColor(parkingCreate.getColor());
+        parkingMap.replace(id, parking);
+        return parking;
+    }
+
+    public Parking exit(String id) {
+        return null;
     }
 
     private static String getUUID() {
