@@ -2,11 +2,13 @@
 
 ### Variables
 @baseUrl = http://localhost:8080/parking
+@client = cloud:p@rk!ng
 @id = {{uuid.response.body.id}}
 
 ### Create one parking
 # @name uuid
 POST {{baseUrl}} HTTP/1.1
+Authorization: Basic {{client}}
 Content-Type: application/json
 
 {
@@ -18,6 +20,7 @@ Content-Type: application/json
 
 ### Update one parking
 PUT {{baseUrl}}/{{id}} HTTP/1.1
+Authorization: Basic {{client}}
 Content-Type: application/json
 
 {
@@ -29,12 +32,16 @@ Content-Type: application/json
 
 ### Find all parkings
 GET {{baseUrl}} HTTP/1.1
+Authorization: Basic {{client}}
 
 ### Find one parking
 GET {{baseUrl}}/{{id}} HTTP/1.1
+Authorization: Basic {{client}}
 
 ### Checkout
 POST {{baseUrl}}/{{id}} HTTP/1.1
+Authorization: Basic {{client}}
 
 ### Delete one parking
 DELETE  {{baseUrl}}/{{id}} HTTP/1.1
+Authorization: Basic {{client}}

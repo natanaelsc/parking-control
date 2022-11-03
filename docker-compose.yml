@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  app:
+    container_name: cloud-parking
+    image: cloudparking
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+
+  postgres_db:
+    image: postgres:10-alpine
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: "exit 0"
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    links:
+      - postgres
+    ports:
+      - 8082:8080
+
+volumes:
+  pgdata:

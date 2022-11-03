@@ -33,6 +33,12 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<!-- PostgreSQL -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -52,7 +58,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Rest Assured -->
+		<!-- REST Assured -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
@@ -69,6 +75,7 @@
 		</dependency>
 
 		<!-- OpenAPI/Swagger -->
+		<!-- https://springdoc.org -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>

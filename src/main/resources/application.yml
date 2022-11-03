@@ -1,0 +1,35 @@
+application:
+  title: Cloud Parking
+  description: Cloud Parking
+  version: 1.0.0
+
+springdoc:
+  api-docs:
+    version: openapi-3-0
+    enabled: true
+
+server:
+  port: 8080
+  error:
+    include-exception: false
+    include-stacktrace: never
+    include-message: always
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/parking
+    username: admin
+    password: a470180d236b6c6e51f5d51e41ea12c856e96c406d6008575611293c6388a713
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  devtools:
+    livereload:
+      port: 35730
