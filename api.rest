@@ -21,6 +21,9 @@ PUT {{baseUrl}}/{{id}} HTTP/1.1
 Content-Type: application/json
 
 {
+    "license": "REE-1234",
+    "state": "SP",
+    "model": "JETTA",
     "color": "PRATA"
 }
 
@@ -29,6 +32,9 @@ GET {{baseUrl}} HTTP/1.1
 
 ### Find one parking
 GET {{baseUrl}}/{{id}} HTTP/1.1
+
+### Checkout
+POST {{baseUrl}}/{{id}} HTTP/1.1
 
 ### Delete one parking
 DELETE  {{baseUrl}}/{{id}} HTTP/1.1

@@ -8,12 +8,12 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import br.com.api.controller.dto.ParkingDTO;
+import br.com.api.controller.dto.ParkingCreateDTO;
 
 import io.restassured.RestAssured;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ParkingControllerTest {
+class ParkingControllerTest extends AbstractContainerBase {
 
     @LocalServerPort
     private int randomPort;
@@ -24,30 +24,30 @@ public class ParkingControllerTest {
     }
 
     @Test
-    void whenCreateThenCheckResult() {
-        var parking = new ParkingDTO();
-        parking.setColor("AMARELO");
-        parking.setLicense("WRT-6666");
-        parking.setModel("BRASILIA");
-        parking.setState("SP");
-        RestAssured.given()
-                .when()
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body(parking)
-                .post("/parking")
-                .then()
-                .statusCode(HttpStatus.CREATED.value())
-                .body("license", Matchers.equalTo("WRT-6666"))
-                .body("color", Matchers.equalTo("AMARELO"));
-    }
-
-    @Test
-    void whenFindAllThenCheckIsCreated() {
+    void whenFindAllThenCheckResult() {
         RestAssured.given()
                 .when()
                 .get("/parking")
                 .then()
-                .statusCode(HttpStatus.OK.value())
-                .body("license[0]", Matchers.equalTo("DMS-1234"));
+                .statusCode(HttpStatus.OK.value());
+    }
+
+    @Test
+    void whenCreateThenCheckIsCreated() {
+        var createDTO = new ParkingCreateDTO();
+        createDTO.setColor("AMARELO");
+        createDTO.setLicense("WRT-5555");
+        createDTO.setModel("BRASILIA");
+        createDTO.setState("SP");
+
+        RestAssured.given()
+                .when()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(createDTO)
+                .post("/parking")
+                .then()
+                .statusCode(HttpStatus.CREATED.value())
+                .body("license", Matchers.equalTo("WRT-5555"))
+                .body("color", Matchers.equalTo("AMARELO"));
     }
 }
