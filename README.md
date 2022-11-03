@@ -1,6 +1,6 @@
 # Cloud Parking
 
-![repo size](https://img.s.io/github/repo-size/natanaelsc/cloud-parking?logo=gitlfs&logoColor=F64935&color=F64935)
+![repo size](https://img.shields.io/github/repo-size/natanaelsc/cloud-parking)
 
 Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para controle de estacionamento de veículos. São controladas as entradas e saídas dos veículos e o valor a ser cobrado do cliente. Foram aplicadas boas práticas de desenvolvimento de API's, incluindo segurança com Spring Security, acesso a banco de dados PostgreSQL, testes e documentação com Swagger. Foi feito o deploy na cloud do Heroku a fim de disponibilizar para a internet.
 
@@ -10,7 +10,7 @@ Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para 
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/) `(Pode ser baixado e instalado para Windows, Mac e Linux)`
 
-### Rodando com [Compose](/docker-compose.yaml)
+### Rodando com [Compose](https://github.com/natanaelsc/cloud-parking/blob/main/docker-compose.yml)
 
 Para subir containers do PostgreSQL e Adminer. Execute o comando no terminal dentro da pasta do projeto.
 
