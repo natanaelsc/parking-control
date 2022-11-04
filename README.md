@@ -29,16 +29,22 @@ docker compose down --remove-orphans -v
 Para subir o container do PostgreSQL:
 
 ```sh
-docker run --name parking-db -p 5432:5432 -e POSTGRES_DB=parking -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123 -d postgres:10-alpine
+docker run --name cloud-parking-db -p 5432:5432 -e POSTGRES_DB=parking -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=6e96c406d6008575611293c6388a713 -d postgres:10-alpine
 ```
 
 Derrubando container:
 
 ```sh
-docker stop parking-db
+docker stop cloud-parking-db
 ```
 
-### Compilando e Executando JAR
+## Acessando aplicação dentro do container
+
+```sh
+docker exec -it cloud-parking sh
+```
+
+## Compilando e Executando JAR
 
 Na raiz do projeto, execute os comandos a seguir:
 

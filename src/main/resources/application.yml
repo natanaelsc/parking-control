@@ -18,9 +18,9 @@ server:
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/parking
+    url: jdbc:postgresql://postgres:5432/parking
     username: admin
-    password: a470180d236b6c6e51f5d51e41ea12c856e96c406d6008575611293c6388a713
+    password: 6e96c406d6008575611293c6388a713
 
   jpa:
     database: postgresql

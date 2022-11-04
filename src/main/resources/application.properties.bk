@@ -11,9 +11,9 @@ springdoc.api-docs.enabled=true
 springdoc.api-docs.version=openapi-3-0
 
 spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://localhost:5432/parking
+spring.datasource.url=jdbc:postgresql://postgres:5432/parking
 spring.datasource.username=admin
-spring.datasource.password=a470180d236b6c6e51f5d51e41ea12c856e96c406d6008575611293c6388a713
+spring.datasource.password=6e96c406d6008575611293c6388a713
 
 spring.jpa.database=postgresql
 spring.jpa.generate-ddl=true
