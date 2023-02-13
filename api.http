@@ -1,7 +1,7 @@
 
 
 ### Variables
-@baseUrl = http://localhost:8080/parking
+@baseUrl = http://localhost:8081/parking
 @client = cloud:p@rk!ng
 @id = {{uuid.response.body.id}}
 
