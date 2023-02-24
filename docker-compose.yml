@@ -13,9 +13,9 @@ services:
     restart: unless-stopped
     ports:
       - 8080:8080
-    # volumes:
-    #   - ..:/app:cached
-    # command: sleep infinity
+    volumes:
+      - ..:/app:cached
+    command: sleep infinity
 
   postgres:
     container_name: cloud-parking-db
