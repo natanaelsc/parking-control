@@ -86,7 +86,6 @@
 		</dependency>
 
 		<!-- Test Containers -->
-		<!-- https://www.testcontainers.org -->
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
@@ -95,7 +94,6 @@
 		</dependency>
 
 		<!-- OpenAPI/Swagger -->
-		<!-- https://springdoc.org -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
