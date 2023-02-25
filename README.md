@@ -8,7 +8,7 @@ Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para 
 
 ### Requisitos
 
-**[Docker](https://www.docker.com/products/docker-desktop)**
+[**Docker**](https://www.docker.com/products/docker-desktop)
 
 1. Execute compose dentro da raiz do projeto:
 
@@ -16,12 +16,15 @@ Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para 
     docker compose up -d
     ```
 
-    Neste compose constam a imagem do PostreSQL e Adminer.
+    No compose constam a imagem do PostreSQL e Adminer.
 
-2. Api Java:
+2. Aplicação Java:
 
     ```sh
     ./mvnw clean install
+    ```
+
+    ```sh
     ./mvnw spring-boot:run
     ```
 
