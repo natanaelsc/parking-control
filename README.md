@@ -8,35 +8,28 @@ Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para 
 
 ### Requisitos
 
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/) `(Pode ser baixado e instalado para Windows, Mac e Linux)`
+* [Docker](https://www.docker.com/products/docker-desktop)
 
-### Rodando com [Compose](https://github.com/natanaelsc/cloud-parking/blob/main/docker-compose.yml)
+1. Execute compose dentro da raiz do projeto:
 
-Para subir containers do PostgreSQL e Adminer. Execute o comando no terminal dentro da pasta do projeto.
+    ```sh
+    docker compose up -d
+    ```
 
-```sh
-docker compose up -d
-```
+    Neste compose constam a imagem do PostreSQL e Adminer.
 
-Derrubando containers e resíduos:
+2. Api Java:
 
-```sh
-docker compose down --remove-orphans -v
-```
+    ```sh
+    ./mvnw clean install
+    ./mvnw spring-boot:run
+    ```
 
-### CLI
+3. Derrubando compose e resíduos:
 
-Para subir o container do PostgreSQL:
-
-```sh
-docker run --name cloud-parking-db -p 5432:5432 -e POSTGRES_DB=parking -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=6e96c406d6008575611293c6388a713 -d postgres:10-alpine
-```
-
-Derrubando container:
-
-```sh
-docker stop cloud-parking-db
-```
+    ```sh
+    docker compose down --remove-orphans --volumes
+    ```
 
 ## Acessando aplicação dentro do container
 
@@ -62,7 +55,7 @@ java -Djava.security.egd=file:/dev/./urandom -jar target/cloud-parking-0.0.1-SNA
 http://localhost:8082
 ```
 
-**Dados de acesso:**
+**Acesso:**
 
 ```txt
 Sistema: PostgreSQL
@@ -87,7 +80,7 @@ user: cloud
 password: p@rk!ng
 ```
 
-### Requisições com o curl
+### Requisições com curl
 
 ```sh
 curl -v -u "cloud:p@rk!ng" -X GET "http://localhost:8080/parking"
@@ -109,10 +102,12 @@ A base do projeto foi gerada a partir do [Spring Initializr](https://start.sprin
 
 ## Ferramentas
 
-* [Docker](https://www.docker.com/products/docker-desktop/)
+* [Docker](https://www.docker.com/products/docker-desktop)
 
 * [SpringDoc - OpenAPI 3 & Spring Boot](https://springdoc.org)
 
 * [REST Assured](https://github.com/rest-assured/rest-assured/wiki/GettingStarted)
 
 * [Testcontainers](https://www.testcontainers.org)
+
+* [Teste de integração com Testcontainers](https://www.baeldung.com/spring-boot-testcontainers-integration-test)
