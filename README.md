@@ -1,4 +1,4 @@
-# Cloud Parking
+# Parking Control
 
 ![repo size](https://img.shields.io/github/repo-size/natanaelsc/cloud-parking)
 
@@ -8,7 +8,7 @@ Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para 
 
 ### Requisitos
 
-* [Docker](https://www.docker.com/products/docker-desktop)
+[**Docker**](https://www.docker.com/products/docker-desktop)
 
 1. Execute compose dentro da raiz do projeto:
 
@@ -16,30 +16,25 @@ Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para 
     docker compose up -d
     ```
 
-    Neste compose constam a imagem do PostreSQL e Adminer.
+    No compose constam a imagem do PostreSQL e Adminer.
 
-2. Api Java:
+2. Aplicação Java:
 
     ```sh
     ./mvnw clean install
+    ```
+
+    ```sh
     ./mvnw spring-boot:run
     ```
 
-3. Derrubando compose e resíduos:
-
-    ```sh
-    docker compose down --remove-orphans --volumes
-    ```
-
-## Acessando aplicação dentro do container
+#### Derrubando compose e resíduos
 
 ```sh
-docker exec -it cloud-parking sh
+docker compose down --remove-orphans --volumes
 ```
 
 ## Compilando e Executando JAR
-
-Na raiz do projeto, execute os comandos a seguir:
 
 ```sh
 ./mvnw clean install
@@ -49,11 +44,9 @@ Na raiz do projeto, execute os comandos a seguir:
 java -Djava.security.egd=file:/dev/./urandom -jar target/cloud-parking-0.0.1-SNAPSHOT.jar
 ```
 
-## [Adminer](http://localhost:8082)
+## Adminer
 
-```url
-http://localhost:8082
-```
+<http://localhost:8082>
 
 **Acesso:**
 
@@ -61,15 +54,13 @@ http://localhost:8082
 Sistema: PostgreSQL
 Servidor: postgres
 Usuário: admin
-Senha: 12345
+Senha: 6e96c406d6008575611293c6388a713
 Base de dados: parking
 ```
 
-## [Swagger](http://localhost:8080/swagger-ui/index.html)
+## Swagger
 
-```url
-http://localhost:8080/swagger-ui/index.html
-```
+<http://localhost:8080/swagger-ui/index.html>
 
 ## Acessando recursos seguros
 
@@ -95,10 +86,6 @@ curl -X GET "http://localhost:8080/parking" -H "accept: */*" -H "authorization: 
 ```sh
 echo -n 'cloud:p@rk!ng' | base64
 ```
-
-## Ambiente de desenvolvimento
-
-A base do projeto foi gerada a partir do [Spring Initializr](https://start.spring.io/) e desenvolvido em ambiente Linux WSL2 com Docker.
 
 ## Ferramentas
 
