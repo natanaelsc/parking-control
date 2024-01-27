@@ -12,7 +12,7 @@ import io.swagger.v3.oas.models.info.License;
 public class SwaggerConfig {
 
     @Bean
-    OpenAPI customOpenAPI(@Value("${spring.application.version}") String appVersion) {
+    OpenAPI customOpenAPI(@Value("${springdoc.api-docs.version}") String appVersion) {
         return new OpenAPI().info(new Info()
                 .title("Parking REST API")
                 .version(appVersion)
