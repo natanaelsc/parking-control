@@ -4,7 +4,7 @@ springdoc:
     version: openapi-3-0
 
 server:
-  port: 8081
+  port: 8080
   error:
     include-exception: false
     include-stacktrace: never
@@ -13,7 +13,6 @@ server:
 spring:
   application:
     name: Cloud Parking
-    version: 0.0.1
 
   datasource:
     driverClassName: org.postgresql.Driver
