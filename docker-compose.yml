@@ -1,11 +1,31 @@
 version: '3.4'
 
 services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - ${PORT:-8080}:8080
+    networks:
+      - net
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["./mvnw", "spring-boot:run"]
+
   postgres:
     image: postgres:10-alpine
     restart: unless-stopped
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT:-5432}:5432
+    networks:
+      - net
     volumes:
       - pgdata:/var/lib/postgresql/data
     env_file:
@@ -18,6 +38,8 @@ services:
     restart: always
     ports:
       - 8082:8080
+    networks:
+      - net
     env_file:
       - .env
     links:
@@ -28,3 +50,8 @@ services:
 
 volumes:
   pgdata:
+
+networks:
+  net:
+    name: parking-control
+    driver: bridge
