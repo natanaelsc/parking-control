@@ -2,39 +2,27 @@
 
 ![repo size](https://img.shields.io/github/repo-size/natanaelsc/cloud-parking)
 
-Neste projeto foi desenvolvido um conjunto de API's utilizando Spring Boot para controle de estacionamento de veículos. São controladas as entradas e saídas dos veículos e o valor a ser cobrado do cliente. Foram aplicadas boas práticas de desenvolvimento de API's, incluindo segurança com Spring Security, acesso a banco de dados PostgreSQL, testes e documentação com Swagger. Foi feito o deploy na cloud do Heroku a fim de disponibilizar para a internet.
+Neste projeto foi implementado um conjunto de API's utilizando Spring Boot para o controle de estacionamento de veículos. São controladas as entradas e saídas dos veículos e o valor a ser cobrado do cliente. Foram aplicadas boas práticas de desenvolvimento de API's, incluindo segurança com Spring Security, acesso a banco de dados PostgreSQL, testes e documentação com Swagger.
 
-## Iniciando
+## Executando o projeto
 
-### Requisitos
+* Copie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente.
 
-[**Docker**](https://www.docker.com/products/docker-desktop)
+* Baixe o [*Docker*](https://www.docker.com/products/docker-desktop) e execute o comando abaixo:
 
-1. Execute compose dentro da raiz do projeto:
+  ```sh
+  docker compose -f docker-compose.prod.yml up --build
+  ```
 
-    ```sh
-    docker compose up -d
-    ```
+* Para parar os containers e remover os resíduos:
 
-    No compose constam a imagem do PostreSQL e Adminer.
-
-2. Aplicação Java:
-
-    ```sh
-    ./mvnw clean install
-    ```
-
-    ```sh
-    ./mvnw spring-boot:run
-    ```
-
-#### Derrubando compose e resíduos
-
-```sh
-docker compose down --remove-orphans --volumes
-```
+  ```sh
+  docker compose down --remove-orphans --volumes --rmi local
+  ```
 
 ## Compilando e Executando JAR
+
+Instale o JDK 11 e execute os comandos abaixo:
 
 ```sh
 ./mvnw clean install
@@ -46,7 +34,7 @@ java -Djava.security.egd=file:/dev/./urandom -jar target/cloud-parking-0.0.1-SNA
 
 ## Adminer
 
-<http://localhost:8082>
+<http://localhost:8083>
 
 **Acesso:**
 
@@ -60,7 +48,7 @@ Base de dados: parking
 
 ## Swagger
 
-<http://localhost:8080/swagger-ui/index.html>
+<http://localhost:8081/swagger-ui/index.html>
 
 ## Acessando recursos seguros
 
@@ -74,7 +62,7 @@ password: p@rk!ng
 ### Requisições com curl
 
 ```sh
-curl -v -u "cloud:p@rk!ng" -X GET "http://localhost:8080/parking"
+curl -v -u "cloud:p@rk!ng" -X GET "http://localhost:8081/parking"
 ```
 
 ```sh
