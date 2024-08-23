@@ -4,7 +4,7 @@ springdoc:
     version: openapi-3-0
 
 server:
-  port: 8080
+  port: 8081
   error:
     include-exception: false
     include-stacktrace: never
@@ -17,8 +17,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://postgres:5432/parking
-    username: admin
-    password: 6e96c406d6008575611293c6388a713
+    username: postgres
+    password: postgres
 
   sql:
     init:
@@ -35,10 +35,14 @@ spring:
   devtools:
     livereload:
       enabled: true
-      port: 35730
+      port: 8082
+    restart:
+      enabled: true
+      exclude: "META-INF/maven/**,META-INF/resources/**,static/**,public/**,templates/**,**/*Test.class,**/*Tests.class,git.properties,META-INF/build-info.properties"
 
 logging:
   level:
+    web: DEBUG
     br:
       com:
         api: TRACE
