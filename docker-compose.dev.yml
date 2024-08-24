@@ -1,0 +1,39 @@
+name: parking-control
+
+services:
+  api:
+    build:
+      context: .
+      target: development
+    restart: always
+    env_file: .env
+    ports:
+      - 8081-8082:8081-8082
+    working_dir: /api
+    command: ./mvnw clean spring-boot:run
+    volumes:
+      - type: bind
+        source: .
+        target: /api
+
+  postgres:
+    image: postgres:16-alpine3.19
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - type: volume
+        source: postgres
+        target: /var/lib/postgresql/data
+
+  adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8083:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DEFAULT_SYSTEM: pgsql
+      ADMINER_DESIGN: hydra
+
+volumes:
+  postgres:

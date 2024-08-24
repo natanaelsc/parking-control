@@ -2,13 +2,13 @@ FROM eclipse-temurin:11-jdk-alpine AS development
 
 RUN addgroup -S abc && adduser -S abc -G abc
 
-USER abc
-
 WORKDIR /api
 
 COPY --chown=abc:abc .mvn/ .mvn
 
 COPY --chown=abc:abc mvnw pom.xml ./
+
+RUN ./mvnw dependency:go-offline
 
 FROM eclipse-temurin:11-jdk-alpine AS builder
 
@@ -20,7 +20,7 @@ COPY --chown=abc:abc --from=development /api/ ./
 
 RUN ./mvnw clean package -DskipTests
 
-FROM eclipse-temurin:11-jre-alpine AS production
+FROM eclipse-temurin:11-jre-alpine
 
 WORKDIR /api
 
